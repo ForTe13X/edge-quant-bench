@@ -1,0 +1,14 @@
+[
+  {"id": "arith_add",     "scorer": "exact",        "prompt": "What is 47 + 86? Reply with only the number.",                                  "expect": "133"},
+  {"id": "arith_mul",     "scorer": "exact",        "prompt": "What is 13 * 12? Reply with only the number.",                                  "expect": "156"},
+  {"id": "extract_id",    "scorer": "exact",        "prompt": "From the text 'Order #4471 ships Tuesday', extract the order number. Reply with only the number.", "expect": "4471"},
+  {"id": "unit_convert",  "scorer": "exact",        "prompt": "Convert 5 kilometers to meters. Reply with only the number.",                   "expect": "5000"},
+  {"id": "fact_capital",  "scorer": "exact",        "prompt": "What is the capital of Japan? Reply with only the city name.",                  "expect": "tokyo"},
+  {"id": "sentiment",     "scorer": "exact",        "prompt": "Classify the sentiment of 'I absolutely love this product' as positive or negative. Reply with one word.", "expect": "positive"},
+  {"id": "prime",         "scorer": "exact",        "prompt": "Is 17 a prime number? Reply yes or no.",                                        "expect": "yes"},
+  {"id": "format_fixed",  "scorer": "regex",        "prompt": "Reply with exactly this and nothing else: READY",                                "expect": "\\bREADY\\b"},
+  {"id": "colors_list",   "scorer": "contains_all", "prompt": "List the three additive primary colors of light, comma-separated, lowercase.",  "expect": ["red", "green", "blue"]},
+  {"id": "json_city",     "scorer": "json_fields",  "prompt": "Return a JSON object with keys city and country for Paris. JSON only, no prose.", "expect": ["city", "country"]},
+  {"id": "time_reason",   "scorer": "exact",        "prompt": "A train leaves at 3pm and the trip takes 2 hours. What time does it arrive? Reply like '5pm'.", "expect": "5pm"},
+  {"id": "bool_compare",  "scorer": "exact",        "prompt": "Is 9 greater than 12? Reply yes or no.",                                        "expect": "no"}
+]

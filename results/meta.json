@@ -1,0 +1,12 @@
+{
+  "_note": "Measured metadata. Sizes are real file bytes (lms ls / file stat). The SIZE ladder ran fully on this box; the QUANT ladder (1.5B at Q3/Q5/Q8) could NOT be fetched in this OFFLINE environment (lms HF artifact resolution failed for Qwen/* and bartowski/*), so it lists only the Q4 reference. Run scripts/quant_ladder.ps1 on a network-connected box (or with llama.cpp) to fill Q3/Q5/Q8 — no numbers are invented here.",
+  "models": {
+    "qwen2.5-0.5b": {"quant": "q4_k_m", "params_b": 0.5, "size_b": 491400032},
+    "qwen2.5-1.5b": {"quant": "q4_k_m", "params_b": 1.5, "size_b": 1117320736},
+    "qwen2.5-3b":   {"quant": "q4_k_m", "params_b": 3.0, "size_b": 2104932768}
+  },
+  "ladders": {
+    "size":  ["qwen2.5-0.5b", "qwen2.5-1.5b", "qwen2.5-3b"],
+    "quant": ["qwen2.5-1.5b"]
+  }
+}

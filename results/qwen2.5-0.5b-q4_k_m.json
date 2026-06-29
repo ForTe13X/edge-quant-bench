@@ -1,0 +1,383 @@
+{
+  "model": "qwen2.5-0.5b",
+  "endpoint": "http://localhost:1234/v1",
+  "repeats": 2,
+  "max_tokens": 96,
+  "n_tasks": 12,
+  "n_pass": 10,
+  "quality_acc": 0.8333,
+  "ttft_s": {
+    "n": 24,
+    "mean": 2.1015,
+    "p50": 2.0982,
+    "ci95_half": 0.006,
+    "min": 2.0791,
+    "max": 2.1454
+  },
+  "decode_tok_per_s": {
+    "n": 2,
+    "mean": 258.5976,
+    "p50": 266.8153,
+    "ci95_half": 16.1068,
+    "min": 250.3798,
+    "max": 266.8153
+  },
+  "decode_tok_per_s_suite": {
+    "n": 2,
+    "mean": 365.4927,
+    "p50": 412.0712,
+    "ci95_half": 91.2939,
+    "min": 318.9142,
+    "max": 412.0712
+  },
+  "tasks": [
+    {
+      "id": "arith_add",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.145375199999762,
+          "total_s": 2.146,
+          "completion_tokens": 4,
+          "tok_per_s": 16224.99,
+          "passed": true,
+          "detail": "want~'133'",
+          "output": "133",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.093887999999424,
+          "total_s": 2.094,
+          "completion_tokens": 4,
+          "tok_per_s": 16977.93,
+          "passed": true,
+          "detail": "want~'133'",
+          "output": "133",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "arith_mul",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.0927593000014895,
+          "total_s": 2.093,
+          "completion_tokens": 4,
+          "tok_per_s": 15321.76,
+          "passed": true,
+          "detail": "want~'156'",
+          "output": "156",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.0949310999985755,
+          "total_s": 2.095,
+          "completion_tokens": 4,
+          "tok_per_s": 14513.79,
+          "passed": true,
+          "detail": "want~'156'",
+          "output": "156",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "extract_id",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.0857482999999775,
+          "total_s": 2.086,
+          "completion_tokens": 5,
+          "tok_per_s": 20920.5,
+          "passed": true,
+          "detail": "want~'4471'",
+          "output": "4471",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.107634699999835,
+          "total_s": 2.108,
+          "completion_tokens": 5,
+          "tok_per_s": 24494.79,
+          "passed": true,
+          "detail": "want~'4471'",
+          "output": "4471",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "unit_convert",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.110609100000147,
+          "total_s": 2.111,
+          "completion_tokens": 6,
+          "tok_per_s": 12956.72,
+          "passed": true,
+          "detail": "want~'5000'",
+          "output": "5000 meters",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.1028979000002437,
+          "total_s": 2.103,
+          "completion_tokens": 6,
+          "tok_per_s": 10101.01,
+          "passed": true,
+          "detail": "want~'5000'",
+          "output": "5000 meters",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "fact_capital",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.114186400000108,
+          "total_s": 2.114,
+          "completion_tokens": 3,
+          "tok_per_s": 11049.72,
+          "passed": true,
+          "detail": "want~'tokyo'",
+          "output": "Tokyo",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.0914732000001095,
+          "total_s": 2.092,
+          "completion_tokens": 3,
+          "tok_per_s": 6064.28,
+          "passed": true,
+          "detail": "want~'tokyo'",
+          "output": "Tokyo",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "sentiment",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.0946082999998907,
+          "total_s": 2.095,
+          "completion_tokens": 2,
+          "tok_per_s": 6349.21,
+          "passed": true,
+          "detail": "want~'positive'",
+          "output": "Positive",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.094604399999298,
+          "total_s": 2.095,
+          "completion_tokens": 2,
+          "tok_per_s": 6086.43,
+          "passed": true,
+          "detail": "want~'positive'",
+          "output": "Positive",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "prime",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.1110260999994352,
+          "total_s": 2.111,
+          "completion_tokens": 3,
+          "tok_per_s": 12202.56,
+          "passed": true,
+          "detail": "want~'yes'",
+          "output": "Yes.",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.092060599999968,
+          "total_s": 2.092,
+          "completion_tokens": 3,
+          "tok_per_s": 5760.37,
+          "passed": true,
+          "detail": "want~'yes'",
+          "output": "Yes.",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "format_fixed",
+      "scorer": "regex",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.124146300000575,
+          "total_s": 2.124,
+          "completion_tokens": 2,
+          "tok_per_s": 7147.96,
+          "passed": true,
+          "detail": "re~\\bREADY\\b",
+          "output": "READY",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.0791266999985965,
+          "total_s": 2.079,
+          "completion_tokens": 2,
+          "tok_per_s": 7267.44,
+          "passed": true,
+          "detail": "re~\\bREADY\\b",
+          "output": "READY",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "colors_list",
+      "scorer": "contains_all",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.0982320999992226,
+          "total_s": 2.1,
+          "completion_tokens": 6,
+          "tok_per_s": 3200.61,
+          "passed": true,
+          "detail": "want_all~['red', 'green', 'blue']",
+          "output": "Red, Green, Blue",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.0959891000002244,
+          "total_s": 2.098,
+          "completion_tokens": 6,
+          "tok_per_s": 3121.29,
+          "passed": true,
+          "detail": "want_all~['red', 'green', 'blue']",
+          "output": "Red, Green, Blue",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "json_city",
+      "scorer": "json_fields",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.100671300000613,
+          "total_s": 2.163,
+          "completion_tokens": 21,
+          "tok_per_s": 318.91,
+          "passed": true,
+          "detail": "need_keys~['city', 'country']",
+          "output": "```json\n{\n  \"city\": \"Paris\",\n  \"country\": \"France\"\n}\n```",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.125014999999621,
+          "total_s": 2.174,
+          "completion_tokens": 21,
+          "tok_per_s": 412.07,
+          "passed": true,
+          "detail": "need_keys~['city', 'country']",
+          "output": "```json\n{\n  \"city\": \"Paris\",\n  \"country\": \"France\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "time_reason",
+      "scorer": "exact",
+      "passed_any": false,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.108191400000578,
+          "total_s": 2.108,
+          "completion_tokens": 4,
+          "tok_per_s": 19907.1,
+          "passed": false,
+          "detail": "want~'5pm'",
+          "output": "10pm",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.088997200000449,
+          "total_s": 2.089,
+          "completion_tokens": 4,
+          "tok_per_s": 18939.39,
+          "passed": false,
+          "detail": "want~'5pm'",
+          "output": "10pm",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "bool_compare",
+      "scorer": "exact",
+      "passed_any": false,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.100035699999353,
+          "total_s": 2.1,
+          "completion_tokens": 3,
+          "tok_per_s": 11001.1,
+          "passed": false,
+          "detail": "want~'no'",
+          "output": "Yes.",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.084142299998348,
+          "total_s": 2.084,
+          "completion_tokens": 3,
+          "tok_per_s": 13368.98,
+          "passed": false,
+          "detail": "want~'no'",
+          "output": "Yes.",
+          "error": null
+        }
+      ]
+    }
+  ]
+}

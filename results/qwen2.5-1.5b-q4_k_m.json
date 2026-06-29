@@ -1,0 +1,383 @@
+{
+  "model": "qwen2.5-1.5b",
+  "endpoint": "http://localhost:1234/v1",
+  "repeats": 2,
+  "max_tokens": 96,
+  "n_tasks": 12,
+  "n_pass": 12,
+  "quality_acc": 1.0,
+  "ttft_s": {
+    "n": 24,
+    "mean": 2.1721,
+    "p50": 2.1087,
+    "ci95_half": 0.1133,
+    "min": 2.0917,
+    "max": 3.4989
+  },
+  "decode_tok_per_s": {
+    "n": 2,
+    "mean": 147.6685,
+    "p50": 153.3629,
+    "ci95_half": 11.161,
+    "min": 141.9741,
+    "max": 153.3629
+  },
+  "decode_tok_per_s_suite": {
+    "n": 4,
+    "mean": 190.9195,
+    "p50": 210.562,
+    "ci95_half": 25.8109,
+    "min": 167.807,
+    "max": 216.6854
+  },
+  "tasks": [
+    {
+      "id": "arith_add",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 3.498930499999915,
+          "total_s": 3.499,
+          "completion_tokens": 4,
+          "tok_per_s": 18270.4,
+          "passed": true,
+          "detail": "want~'133'",
+          "output": "133",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.0923909000011918,
+          "total_s": 2.093,
+          "completion_tokens": 4,
+          "tok_per_s": 18575.85,
+          "passed": true,
+          "detail": "want~'133'",
+          "output": "133",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "arith_mul",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.1116504999990866,
+          "total_s": 2.112,
+          "completion_tokens": 4,
+          "tok_per_s": 19305.02,
+          "passed": true,
+          "detail": "want~'156'",
+          "output": "156",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.1077333000012004,
+          "total_s": 2.108,
+          "completion_tokens": 4,
+          "tok_per_s": 18170.81,
+          "passed": true,
+          "detail": "want~'156'",
+          "output": "156",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "extract_id",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.1271225000000413,
+          "total_s": 2.127,
+          "completion_tokens": 5,
+          "tok_per_s": 25839.79,
+          "passed": true,
+          "detail": "want~'4471'",
+          "output": "4471",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.108696199999031,
+          "total_s": 2.109,
+          "completion_tokens": 5,
+          "tok_per_s": 25477.71,
+          "passed": true,
+          "detail": "want~'4471'",
+          "output": "4471",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "unit_convert",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.126750899999024,
+          "total_s": 2.127,
+          "completion_tokens": 5,
+          "tok_per_s": 23937.76,
+          "passed": true,
+          "detail": "want~'5000'",
+          "output": "5000",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.10613419999936,
+          "total_s": 2.106,
+          "completion_tokens": 5,
+          "tok_per_s": 23682.65,
+          "passed": true,
+          "detail": "want~'5000'",
+          "output": "5000",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "fact_capital",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.128053099999306,
+          "total_s": 2.128,
+          "completion_tokens": 3,
+          "tok_per_s": 13550.14,
+          "passed": true,
+          "detail": "want~'tokyo'",
+          "output": "Tokyo",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.0946038000001863,
+          "total_s": 2.095,
+          "completion_tokens": 3,
+          "tok_per_s": 13114.75,
+          "passed": true,
+          "detail": "want~'tokyo'",
+          "output": "Tokyo",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "sentiment",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.104875799999718,
+          "total_s": 2.105,
+          "completion_tokens": 2,
+          "tok_per_s": 6821.28,
+          "passed": true,
+          "detail": "want~'positive'",
+          "output": "Positive",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.1165425999988656,
+          "total_s": 2.117,
+          "completion_tokens": 2,
+          "tok_per_s": 7645.26,
+          "passed": true,
+          "detail": "want~'positive'",
+          "output": "Positive",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "prime",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.1048565000000963,
+          "total_s": 2.105,
+          "completion_tokens": 3,
+          "tok_per_s": 6825.94,
+          "passed": true,
+          "detail": "want~'yes'",
+          "output": "Yes.",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.106645399999252,
+          "total_s": 2.107,
+          "completion_tokens": 3,
+          "tok_per_s": 11142.06,
+          "passed": true,
+          "detail": "want~'yes'",
+          "output": "Yes.",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "format_fixed",
+      "scorer": "regex",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.1075633999989805,
+          "total_s": 2.108,
+          "completion_tokens": 2,
+          "tok_per_s": 7304.6,
+          "passed": true,
+          "detail": "re~\\bREADY\\b",
+          "output": "READY",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.0916551999998774,
+          "total_s": 2.092,
+          "completion_tokens": 2,
+          "tok_per_s": 3840.25,
+          "passed": true,
+          "detail": "re~\\bREADY\\b",
+          "output": "READY",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "colors_list",
+      "scorer": "contains_all",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.1312264000007417,
+          "total_s": 2.303,
+          "completion_tokens": 30,
+          "tok_per_s": 168.62,
+          "passed": true,
+          "detail": "want_all~['red', 'green', 'blue']",
+          "output": "The three additive primary colors of light are:\n\n- Red\n- Green\n- Blue\n\nThese colors when combined in equal amounts produce white light.",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.105966899998748,
+          "total_s": 2.279,
+          "completion_tokens": 30,
+          "tok_per_s": 167.81,
+          "passed": true,
+          "detail": "want_all~['red', 'green', 'blue']",
+          "output": "The three additive primary colors of light are:\n\n- Red\n- Green\n- Blue\n\nThese colors when combined in equal amounts produce white light.",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "json_city",
+      "scorer": "json_fields",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.154349499998716,
+          "total_s": 2.249,
+          "completion_tokens": 21,
+          "tok_per_s": 210.56,
+          "passed": true,
+          "detail": "need_keys~['city', 'country']",
+          "output": "```json\n{\n  \"city\": \"Paris\",\n  \"country\": \"France\"\n}\n```",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.13462349999827,
+          "total_s": 2.227,
+          "completion_tokens": 21,
+          "tok_per_s": 216.69,
+          "passed": true,
+          "detail": "need_keys~['city', 'country']",
+          "output": "```json\n{\n  \"city\": \"Paris\",\n  \"country\": \"France\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "time_reason",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.159118200001103,
+          "total_s": 2.206,
+          "completion_tokens": 9,
+          "tok_per_s": 170.87,
+          "passed": true,
+          "detail": "want~'5pm'",
+          "output": "The train arrives at 5pm.",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.1017461999999796,
+          "total_s": 2.134,
+          "completion_tokens": 9,
+          "tok_per_s": 246.08,
+          "passed": true,
+          "detail": "want~'5pm'",
+          "output": "The train arrives at 5pm.",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "bool_compare",
+      "scorer": "exact",
+      "passed_any": true,
+      "repeats": [
+        {
+          "repeat": 0,
+          "ttft_s": 2.113462499999514,
+          "total_s": 2.114,
+          "completion_tokens": 3,
+          "tok_per_s": 16273.39,
+          "passed": true,
+          "detail": "want~'no'",
+          "output": "No.",
+          "error": null
+        },
+        {
+          "repeat": 1,
+          "ttft_s": 2.0967199000006076,
+          "total_s": 2.097,
+          "completion_tokens": 3,
+          "tok_per_s": 8787.35,
+          "passed": true,
+          "detail": "want~'no'",
+          "output": "No.",
+          "error": null
+        }
+      ]
+    }
+  ]
+}

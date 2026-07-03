@@ -1,56 +1,62 @@
 # edge-quant-bench
 
-A small, **honest-by-construction** benchmark of on-device LLM efficiency: how quantization and model
-size trade off **quality ↔ latency ↔ memory** on a real consumer machine (AMD APU), served through a
-local OpenAI-compatible runtime (LM Studio). Built to demonstrate the eval discipline a quantization /
-efficient-inference role needs — *measure everything, pre-register the prediction, report the negative.*
+A small benchmark for on-device LLM efficiency. It measures how model size and quantization affect quality, latency, and memory on a consumer AMD APU through a local OpenAI-compatible runtime, such as LM Studio.
 
-Stdlib-only Python (no deps to install). Every number is **measured** from a real generation call or a
-file stat; nothing is assumed or hand-typed. Quality is a deterministic auto-scored proxy suite — and is
-labelled a *proxy* everywhere (the gold metric, perplexity, needs llama.cpp; the script is provided).
+The benchmark is intentionally narrow and reproducible:
 
-## Two axes
-| axis | what varies | what's fixed | status |
+- Standard-library Python only.
+- Every reported number comes from a generation call or a file stat.
+- Quality is a deterministic proxy task suite and is labeled as a proxy throughout.
+- Hypotheses and decision rules are stored in [PREREG.md](PREREG.md) before measurement.
+
+## Benchmark Axes
+
+| Axis | What varies | What stays fixed | Status |
 |---|---|---|---|
-| **Size ladder** | params 0.5B / 1.5B / 3B | quant `Q4_K_M` | ✅ ran on this box |
-| **Quant ladder** | bit-width Q3 / Q4 / Q5 / Q8 | model `Qwen2.5-1.5B` | ⏸ pre-registered; not fetchable offline here — `scripts/quant_ladder.ps1` |
+| Size ladder | 0.5B / 1.5B / 3B parameters | `Q4_K_M` quantization | Ran on this machine |
+| Quant ladder | Q3 / Q4 / Q5 / Q8 bit-widths | `Qwen2.5-1.5B` | Pre-registered; script provided, not run in the offline setup |
 
-## Results (size ladder — measured, real)
-| params | quant | size | quality_acc | TTFT p50 | decode tok/s |
+## Results: Size Ladder
+
+| Params | Quant | Size | Quality acc | TTFT p50 | Decode tok/s |
 |---|---|---|---|---|---|
-| 0.5B | Q4_K_M | 0.49 GB | 0.83 | 2.10 s | 259 ± 16 |
-| **1.5B** | Q4_K_M | 1.12 GB | **1.00** | 2.11 s | 148 ± 11 |
-| 3.0B | Q4_K_M | 2.10 GB | 0.92 | 2.15 s | 89 ± 1 |
+| 0.5B | Q4_K_M | 0.49 GB | 0.83 | 2.10 s | 259 +/- 16 |
+| 1.5B | Q4_K_M | 1.12 GB | 1.00 | 2.11 s | 148 +/- 11 |
+| 3.0B | Q4_K_M | 2.10 GB | 0.92 | 2.15 s | 89 +/- 1 |
 
-- **Quality is non-monotone — 1.5B is the sweet spot** (12/12) and beats 3B (11/12) on this suite. Honest
-  caveat: the 12-task suite is coarse (1 task = 8.3%), so this says "1.5B-Q4 is already enough for these
-  tasks", not "1.5B > 3B in general".
-- **Decode throughput falls ~2.9× from 0.5B→3B** (259→89 tok/s); **TTFT is ~flat** (~2.1 s, overhead-bound
-  at these sizes) — so on this hardware the lever for interactive latency is *model size*, not prompt cost.
-- Frontier plot: `frontier_size.svg`.
+Observed shape on this setup:
 
-> Latency is specific to this AMD-APU box + LM Studio offload — read the **shape**, not the absolutes.
+- The 1.5B model is the best point on the proxy suite: 12/12 correct, compared with 11/12 for 3B. This should be read as "1.5B-Q4 is enough for these tasks", not as a general claim that 1.5B outperforms 3B.
+- Decode throughput drops about 2.9x from 0.5B to 3B, while TTFT stays near 2.1 s. For this hardware and serving stack, model size matters more than prompt overhead for interactive latency.
+- The frontier plot is generated as `frontier_size.svg`.
 
-## Run it
+Absolute latency is hardware- and runtime-specific. The useful result is the relative shape across rungs.
+
+## Run It
+
 ```powershell
-# size ladder (what ran here): imports the on-disk Q4 GGUFs into LM Studio and benchmarks each
+# Size ladder used for the measured result.
 pwsh scripts/run_size_ladder.ps1
-# quant ladder (needs network/HF or llama.cpp): downloads Q3/Q4/Q5/Q8 of one model and benchmarks each
+
+# Quant ladder. Requires network or local Hugging Face artifacts and llama.cpp support.
 pwsh scripts/quant_ladder.ps1
-# one model, ad-hoc:
+
+# One ad-hoc model run.
 python bench/runner.py --model qwen2.5-1.5b --tasks bench/tasks.json --out results/x.json
 python bench/report.py results
 ```
 
-## Layout
-- `bench/runner.py` — streams a generation per task; measures TTFT, decode tok/s (long-gen probe), auto-scores quality.
-- `bench/tasks.json` — 12 deterministic tasks (arith / extraction / format / JSON / short-fact).
-- `bench/report.py` — ladder-aware tables + verdicts vs hypotheses + `frontier_*.svg`.
-- `PREREG.md` — frozen hypotheses + decision rules (committed before the run).
-- `results/` — per-model JSON + `meta.json` (measured sizes) + `REPORT.md`.
-- `scripts/` — PowerShell orchestrators for each ladder.
+## Repository Layout
 
-## Honesty notes
-- Quality = **proxy** (task accuracy), not perplexity. Perplexity ladder = `scripts/quant_ladder.ps1` (B), needs llama.cpp.
-- The quant ladder did **not** run in this offline dev environment; its rows are absent, not invented.
-- Absolute latency is hardware-specific; cross-rung **shape** is the result.
+- `bench/runner.py` streams each generation, measures TTFT and decode throughput, and auto-scores quality.
+- `bench/tasks.json` contains 12 deterministic tasks covering arithmetic, extraction, formatting, JSON, and short factual answers.
+- `bench/report.py` builds ladder-aware tables, compares results with the preregistered hypotheses, and writes `frontier_*.svg`.
+- `PREREG.md` records hypotheses and decision rules before the run.
+- `results/` stores per-model JSON, measured file sizes in `meta.json`, and `REPORT.md`.
+- `scripts/` contains PowerShell orchestration for each ladder.
+
+## Scope Notes
+
+- Quality is task accuracy on a small proxy suite, not perplexity. The quant/perplexity path is provided through `scripts/quant_ladder.ps1` and requires llama.cpp.
+- The quant ladder was not run in the offline development environment, so its result rows are absent.
+- Cross-rung comparisons are meaningful within the same machine, runtime, model family, and benchmark task set.

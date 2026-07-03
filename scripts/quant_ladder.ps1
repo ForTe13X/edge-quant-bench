@@ -9,7 +9,7 @@
 # machine to fill PREREG H1–H3 with real numbers. Nothing here fabricates results.
 
 $ErrorActionPreference = "Stop"
-$PY   = "E:\Documents\Dev\June\10th\SPI\.venv\Scripts\python.exe"   # any python3 works (stdlib only)
+$PY   = "python"   # any python3 works (stdlib only)
 $LMS  = "$env:USERPROFILE\.lmstudio\bin\lms.exe"
 $ROOT = Split-Path $PSScriptRoot -Parent
 $REPO = "Qwen/Qwen2.5-1.5B-Instruct-GGUF"        # or bartowski/Qwen2.5-1.5B-Instruct-GGUF

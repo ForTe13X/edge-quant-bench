@@ -4,7 +4,7 @@
 # Reproduces results/*.json + REPORT.md exactly.
 
 $ErrorActionPreference = "Stop"
-$PY   = "E:\Documents\Dev\June\10th\SPI\.venv\Scripts\python.exe"
+$PY   = "python"
 $LMS  = "$env:USERPROFILE\.lmstudio\bin\lms.exe"
 $ROOT = Split-Path $PSScriptRoot -Parent
 Set-Location $ROOT
